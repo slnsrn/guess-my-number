@@ -11,10 +11,81 @@ body {
   @apply bg-gray-900;
 }
 
-#confetti{
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+.confetti .particle{
+     opacity:0;
+     position: absolute;
+     animation: confetti 3s ease-in infinite;
 }
+
+.confetti .particle.c1 {
+  background-color:#000;
+}
+
+.confetti .particle.c2 {
+  background-color:#fb5d8d;
+}
+
+.confetti .particle.c3 {
+  @apply bg-purple-800;
+}
+
+.confetti .particle.c4 {
+  background-color: #f7d51d;
+}
+
+@keyframes confetti {
+  0% {
+     opacity:0;
+     transform:translateY(0%) rotate(0deg);
+  }
+  10% {
+     opacity:1;
+  }
+  35% {
+     transform:translateY(-800%) rotate(270deg);
+  }
+  80% {
+     opacity:1;
+  }
+  100% {
+     opacity:0;
+     transform:translateY(2000%) rotate(1440deg);
+  }
+}
+
+@keyframes shine1 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity:1;
+  }
+  75%{
+    opacity:0.7;
+  }
+  100%{
+    opacity:0.3;
+  }
+}
+
+@keyframes shine2 {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity:0.2;
+  }
+  75%{
+    opacity:0.5;
+  }
+  100%{
+    opacity:0.8;
+  }
+}
+

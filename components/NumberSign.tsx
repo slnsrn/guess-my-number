@@ -13,7 +13,7 @@ export default function NumberSign (){
         <input key={i} className={cx(
             {'is-error': gameResult==='lost',
             'text-reddish': gameResult==='won' }
-            ,'nes-input text-center text-xl')}
+            ,'nes-input text-center text-xl py-1')}
             disabled value={digit.hidden? '?' : digit.value }/>)
 
     return (<div className='flex mt-6 mb-16 w-full justify-center'>{numberArray.map(digitFrame)}</div>)

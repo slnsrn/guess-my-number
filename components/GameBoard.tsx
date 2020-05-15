@@ -1,15 +1,17 @@
 import { useContext, useState, useEffect } from 'react'
 
-
 import {GameContext} from '../context/GameContext'
+import useUtils from '../hooks/useUtils'
+
 import GuessRow from './GuessRow'
 import Button from './Button'
-import Guess from '../types/Guess'
-import GuessResult from '../types/GuessResult'
 import SettingsTool from './SettingsTool'
 import NumberSign from './NumberSign'
 import PartyBackground from './PartyBackground'
 import Confetti from './Confetti'
+
+import Guess from '../types/Guess'
+import GuessResult from '../types/GuessResult'
 
 
 const defaultGuess:Guess = {value:[], round:1, result:{}, passed:false}
@@ -24,6 +26,7 @@ export default function GameBoard (){
     const { digits, rounds, gameStarted, resetGame, numberArray, endGame, gameResult,} = useContext(GameContext)
     const [guesses, setGuesses] = useState<Guess[]>([{...defaultGuess}])
     const [partyModeOn, setPartyModeOn] = useState(false)
+    const { scrollTop } =useUtils()
 
     useEffect(()=>{
 
@@ -57,55 +60,57 @@ export default function GameBoard (){
 
         if(!result.minus && !result.plus){result.missed=true}
 
-        if(result.plus === digits){
-            endGame(true)
-            window.scrollTo({top: 0, behavior: 'smooth'})
-        }
-
-        if(rounds === guesses.length ){
-            endGame(false)
-            window.scrollTo({top: 0, behavior: 'smooth'})
-        }
-
         const guess:Guess = {
             value: guessArray,
             round: guesses.length,
             result:result,
             passed:true
         }
+
         const newList:Guess[]= guesses.concat()
         newList.pop()
         newList.push(guess)
 
-        if(!rounds || guesses.length < rounds){
-            newList.push({...defaultGuess, round:guesses.length+1})
+
+        if(result.plus === digits || rounds === guesses.length){
+            endGame(result.plus === digits)
+            scrollTop()
+        }else{
+            if(!rounds || guesses.length < rounds){
+                newList.push({...defaultGuess, round:guesses.length+1})
+            }
         }
+
         setGuesses(newList)
 
     }
     const remainingRounds = rounds - guesses.length
 
+    const myMessage = !gameResult
+                        ? ( gameStarted
+                                ? `You have ${rounds === 0 ? 'unlimited' : rounds} rounds to guess my number. Start writing your guess and see the results ;)`
+                                :'Set your preferences and start playing!')
+                        : `You have ${gameResult}!`
+
   return (
     <>
         {partyModeOn && <PartyBackground/>}
-        {<Confetti/>}
-        <div className='p-4 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto'>
-            <div className="nes-container px-4 py-6 md:px-8 with-title">
+        <div className='px-4 py-6 lg:px-20 md:py-12 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto'>
+            <div className="nes-container px-4 py-6 lg:px-8 with-title">
                 <p className="title">A Cool's Game</p>
-                <div className=" ml-20 mt-8 flex">
-                    <div className="-mt-12 nes-balloon from-left">
-                        <p className='text-sm md:text-base'>{gameStarted? `You have ${rounds === 0 ? 'unlimited' : rounds} rounds to guess my number. Start writing your guess and see the results ;)`:'Set your preferences and start playing!'}</p>
+                <div className=" ml-12 md:ml-20 mt-12 md:mt-8 flex">
+                    <div className="nes-balloon from-left">
+                        <p className='text-sm md:text-base'>{myMessage}</p>
                     </div>
                 </div>
             <i className="-mt-8 nes-octocat animate"></i>
-
             {!gameResult && rounds !== 0 && remainingRounds <=2 && <span className='ml-2 nes-text is-error'>{`Ups! You have ${remainingRounds} rounds left.`}</span>}
-            {gameResult && <span className='ml-2 nes-text is-error'>{`You have ${gameResult}!`}</span>}
+            {gameResult ==='won' && <Confetti/>}
             <SettingsTool/>
             <NumberSign/>
             {gameStarted && <div>
                 {guesses.map(returnGuessRow)}
-                <Button onClick={resetGame} label='Reset game'/>
+                <div className='pt-8'><Button onClick={resetGame} label='Reset game'/></div>
             </div>
             }
             </div>
@@ -114,7 +119,5 @@ export default function GameBoard (){
             <input type="checkbox" className="nes-checkbox is-dark" checked={partyModeOn} onChange={()=>setPartyModeOn(prevMode=>{return !prevMode})} />
             <span>Enable party mode</span>
          </label>
-    </>
-)
-
+    </>)
 }
