@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -349,7 +349,7 @@ function GameBoard() {
       columnNumber: 25
     }
   }), __jsx("div", {
-    className: "px-4 py-6 lg:px-20 md:py-12 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
+    className: "px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -783,8 +783,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /** @jsx jsx */
 
 
-const colors = ['#FF00CC', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
-const animation = ['shine2', 'shine1'];
+const colors = ['#e76e55', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
+const animation = ['shine2', 'shine1', 'shine3'];
 function PartyBackground() {
   const {
     windowWidth,
@@ -793,44 +793,67 @@ function PartyBackground() {
   } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
   const createBall = () => {
-    const wh = rnd(1, 2);
+    const w = rnd(0.5, 1);
+    const h = rnd(0.5, 1);
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const spanCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
+        color: ${color};
+        background-color: ${color};
+        box-shadow: 0 0.5em ${color}, 0 -0.5em ${color}, 0.5em 0 ${color}, -0.5em 0 ${color};`;
+    const containerCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
+            left: ${Math.random() * (windowWidth - 2)}px;
+            top: ${Math.random() * (windowHeight - 2)}px;`;
     const ballCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
-            z-index:-1;
-            width: ${wh}rem;
-            height: ${wh}rem;
-            border-radius:50%;
+            height: ${h}em;
             transition-duration:.45s;
-            position:absolute;
+            display:inline-block;
             transition-duration:1.4s;
             transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);
-            left: ${Math.random() * (windowWidth - 2)}px;
-            top: ${Math.random() * (windowHeight - 2)}px;
-            background:  ${colors[Math.floor(Math.random() * colors.length)]};
+            font-size: ${rnd(6, 10)}px;
+            background:  ${color};
             opacity: ${Math.random()};
-            animation: ${animation[rnd(0, 1)]} 2s infinite;
+            animation: ${animation[rnd(0, 2)]} 1s infinite;
         `;
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
       key: Math.random(),
-      className: "ball",
-      css: ballCss,
+      className: "absolute",
+      css: containerCss,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32,
+        lineNumber: 39,
         columnNumber: 17
       }
-    });
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+      css: ballCss,
+      className: "ball",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 82
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("span", {
+      css: spanCss,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 118
+      }
+    }, "1")));
   };
 
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    className: "fixed top-0 left-0 z-1-",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 43,
       columnNumber: 9
     }
   }, Array.from({
-    length: 200
+    length: 400
   }, item => createBall()));
 }
 
@@ -1221,7 +1244,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     columnNumber: 3
   }
 }, __jsx("div", {
-  className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-20",
+  className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
@@ -1229,7 +1252,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     columnNumber: 5
   }
 }, __jsx("h1", {
-  className: "text-center mb-8 text-white text-2xl md:text-4xl",
+  className: "text-center mb-6 text-white text-2xl md:text-4xl",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
@@ -1247,7 +1270,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

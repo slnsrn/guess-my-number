@@ -5,6 +5,9 @@ module.exports = {
       colors:{
         pinky:'#fb5d8d',
         reddish:'#ce372b'
+      },
+      zIndex: {
+        '1-':-1,
       }
     },
   },

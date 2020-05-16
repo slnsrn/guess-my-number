@@ -269,7 +269,7 @@ function GameBoard() {
       columnNumber: 25
     }
   }), __jsx("div", {
-    className: "px-4 py-6 lg:px-20 md:py-12 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
+    className: "px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -705,8 +705,28 @@ var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-m
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
+function _templateObject3() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n            height: ", "em;\n            transition-duration:.45s;\n            display:inline-block;\n            transition-duration:1.4s;\n            transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);\n            font-size: ", "px;\n            background:  ", ";\n            opacity: ", ";\n            animation: ", " 1s infinite;\n        "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n            left: ", "px;\n            top: ", "px;"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n            z-index:-1;\n            width: ", "rem;\n            height: ", "rem;\n            border-radius:50%;\n            transition-duration:.45s;\n            position:absolute;\n            transition-duration:1.4s;\n            transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);\n            left: ", "px;\n            top: ", "px;\n            background:  ", ";\n            opacity: ", ";\n            animation: ", " 2s infinite;\n        "]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n        color: ", ";\n        background-color: ", ";\n        box-shadow: 0 0.5em ", ", 0 -0.5em ", ", 0.5em 0 ", ", -0.5em 0 ", ";"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -718,8 +738,8 @@ function _templateObject() {
 /** @jsx jsx */
 
 
-var colors = ['#FF00CC', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
-var animation = ['shine2', 'shine1'];
+var colors = ['#e76e55', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
+var animation = ['shine2', 'shine1', 'shine3'];
 function PartyBackground() {
   var _this = this;
 
@@ -729,30 +749,52 @@ function PartyBackground() {
       rnd = _useUtils.rnd;
 
   var createBall = function createBall() {
-    var wh = rnd(1, 2);
-    var ballCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject(), wh, wh, Math.random() * (windowWidth - 2), Math.random() * (windowHeight - 2), colors[Math.floor(Math.random() * colors.length)], Math.random(), animation[rnd(0, 1)]);
+    var w = rnd(0.5, 1);
+    var h = rnd(0.5, 1);
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    var spanCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject(), color, color, color, color, color, color);
+    var containerCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject2(), Math.random() * (windowWidth - 2), Math.random() * (windowHeight - 2));
+    var ballCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject3(), h, rnd(6, 10), color, Math.random(), animation[rnd(0, 2)]);
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
       key: Math.random(),
-      className: "ball",
-      css: ballCss,
+      className: "absolute",
+      css: containerCss,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32,
+        lineNumber: 39,
         columnNumber: 17
       }
-    });
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
+      css: ballCss,
+      className: "ball",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 82
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("span", {
+      css: spanCss,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 118
+      }
+    }, "1")));
   };
 
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
+    className: "fixed top-0 left-0 z-1-",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 43,
       columnNumber: 9
     }
   }, Array.from({
-    length: 200
+    length: 400
   }, function (item) {
     return createBall();
   }));
@@ -3495,7 +3537,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       columnNumber: 3
     }
   }, __jsx("div", {
-    className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-20",
+    className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3503,7 +3545,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       columnNumber: 5
     }
   }, __jsx("h1", {
-    className: "text-center mb-8 text-white text-2xl md:text-4xl",
+    className: "text-center mb-6 text-white text-2xl md:text-4xl",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3522,7 +3564,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!********************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fslnsrn%2FDocuments%2FProjects%2FMyGames%2FGuessNumber%2Fguess-my-number%2Fpages%2Findex.js&hotRouterUpdates=true ***!
   \********************************************************************************************************************************************************************************************/
@@ -3545,5 +3587,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
