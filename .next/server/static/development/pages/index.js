@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -670,37 +670,6 @@ function GuessRow({
 
 /***/ }),
 
-/***/ "./components/Logo.tsx":
-/*!*****************************!*\
-  !*** ./components/Logo.tsx ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Logo; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/Logo.tsx";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-function Logo() {
-  return __jsx("img", {
-    className: "mx-auto w-auto h-32",
-    src: "logo.png",
-    alt: "guess my number",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 3,
-      columnNumber: 13
-    }
-  });
-}
-
-/***/ }),
-
 /***/ "./components/NumberSign.tsx":
 /*!***********************************!*\
   !*** ./components/NumberSign.tsx ***!
@@ -1228,27 +1197,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_GameBoard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/GameBoard */ "./components/GameBoard.tsx");
-/* harmony import */ var _components_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Logo */ "./components/Logo.tsx");
-/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_context_GameContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+/* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_context_GameContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7,
+    columnNumber: 3
+  }
+}, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 8,
-    columnNumber: 3
+    columnNumber: 5
   }
-}, __jsx("div", {
-  className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
+}, __jsx("title", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 9,
+    columnNumber: 9
+  }
+}, "Guess my number"), __jsx("meta", {
+  property: "og:title",
+  content: "Guess my number",
+  key: "title",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 9
+  }
+}), __jsx("meta", {
+  property: "og:description",
+  content: "A Cool's game",
+  key: "description",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11,
+    columnNumber: 9
+  }
+})), __jsx("div", {
+  className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13,
     columnNumber: 5
   }
 }, __jsx("h1", {
@@ -1256,21 +1260,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10,
+    lineNumber: 14,
     columnNumber: 7
   }
 }, "Guess my number"), __jsx(_components_GameBoard__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11,
+    lineNumber: 15,
     columnNumber: 7
   }
 }))));
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -1301,6 +1305,17 @@ module.exports = require("@emotion/core");
 /***/ (function(module, exports) {
 
 module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 

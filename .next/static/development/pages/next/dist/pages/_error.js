@@ -838,7 +838,7 @@ module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!******************************************************************************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fnext%2Fdist%2Fpages%2F_error&absolutePagePath=%2FUsers%2Fslnsrn%2FDocuments%2FProjects%2FMyGames%2FGuessNumber%2Fguess-my-number%2Fnode_modules%2Fnext%2Fdist%2Fpages%2F_error.js&hotRouterUpdates=true ***!
   \******************************************************************************************************************************************************************************************************************************************************/
@@ -861,5 +861,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=_error.js.map
