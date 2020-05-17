@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import GuessResult from \"./GuessResult\";\n\nexport default interface Guess {\n    value:string[]\n    round:number\n    passed: boolean\n    result:GuessResult\n}"]},"metadata":{},"sourceType":"module"}

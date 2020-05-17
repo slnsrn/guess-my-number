@@ -276,21 +276,24 @@ function GameBoard() {
   const {
     scrollTop
   } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    setGuesses([_objectSpread({}, defaultGuess)]);
-  }, [gameStarted]);
 
   const returnGuessRow = guess => __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_3__["default"], {
     key: guess.round,
     guess: guess,
     guessNumber: guessNumber,
+    currentRound: guesses.length,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 31,
       columnNumber: 44
     }
   });
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    //reset the game
+    setGuesses([_objectSpread({}, defaultGuess)]);
+  }, [gameStarted]);
 
   const guessNumber = guessArray => {
     const controlArray = createControlArray(numberArray);
@@ -404,40 +407,32 @@ function GameBoard() {
       lineNumber: 106,
       columnNumber: 13
     }
-  }), !gameResult && rounds !== 0 && remainingRounds <= 2 && __jsx("span", {
-    className: "ml-2 nes-text is-error",
+  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_8__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 107,
-      columnNumber: 68
-    }
-  }, `Ups! You have ${remainingRounds} rounds left.`), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108,
       columnNumber: 37
     }
   }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 108,
       columnNumber: 13
     }
   }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 109,
       columnNumber: 13
     }
   }), gameStarted && __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
+      lineNumber: 110,
       columnNumber: 29
     }
   }, guesses.map(returnGuessRow), __jsx("div", {
@@ -445,7 +440,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 112,
       columnNumber: 17
     }
   }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -454,7 +449,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 112,
       columnNumber: 39
     }
   }))))), __jsx("label", {
@@ -462,7 +457,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 117,
       columnNumber: 9
     }
   }, __jsx("input", {
@@ -475,14 +470,14 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 118,
       columnNumber: 13
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 119,
       columnNumber: 13
     }
   }, "Enable party mode")));
@@ -502,18 +497,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuessRow; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/GuessRow.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
 function GuessRow({
   guess,
-  guessNumber
+  guessNumber,
+  currentRound
 }) {
   const {
-    digits
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_1__["GameContext"]);
+    digits,
+    giveHint,
+    hintsGiven
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_2__["GameContext"]);
   const {
     round,
     result,
@@ -524,6 +525,10 @@ function GuessRow({
     0: inputValue,
     1: setInputValue
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value);
+  const {
+    0: hintGiven,
+    1: setHintGiven
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   const inputRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
 
   const handleUserKeyPress = event => {
@@ -553,13 +558,30 @@ function GuessRow({
     guessNumber(inputValue);
   };
 
+  const onHintClick = () => {
+    setHintGiven(true);
+    giveHint();
+  };
+
+  const onFocus = () => {
+    if (inputValue.length === 0 && hintGiven) {
+      setInputValue([...hintsGiven]);
+    }
+  };
+
+  const placeholder = Array.from({
+    length: digits
+  }, (item, i) => hintsGiven[i] || 'X').join(' ');
   const id = `guessInput${round}`;
+  const showHint = !passed && !hintGiven && currentRound > 2 && hintsGiven.length < digits - 1;
   return __jsx("div", {
-    className: "flex flex-col sm:flex-row mx-auto mb-6",
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+      'relative pb-32': currentRound > 2 && !passed
+    }, 'flex flex-col sm:flex-row mx-auto mb-4'),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -567,16 +589,16 @@ function GuessRow({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 56,
       columnNumber: 11
     }
   }, __jsx("div", {
-    className: "w-56 mr-4",
+    className: "w-56 mr-2 lg:mr-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 11
+      lineNumber: 57,
+      columnNumber: 13
     }
   }, __jsx("input", {
     autoFocus: true,
@@ -585,20 +607,21 @@ function GuessRow({
     className: "nes-input focus:outline-none text-center custom-padding",
     disabled: passed,
     type: "tel",
-    placeholder: `Round ${round}`,
+    placeholder: placeholder,
     id: id,
     value: inputValue.join(' '),
     onChange: event => handleChange(event.target.value),
     maxLength: digits * 2 - 1,
+    onFocus: onFocus,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 13
+      lineNumber: 58,
+      columnNumber: 15
     }
   })), !passed && __jsx("img", {
     src: "press.png",
-    className: "ml-2 w-auto h-12",
+    className: "w-auto h-10 md:h-12",
     style: {
       imageRendering: 'pixelated'
     },
@@ -606,23 +629,52 @@ function GuessRow({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 23
+      lineNumber: 74,
+      columnNumber: 17
     }
-  })), passed && __jsx("div", {
+  }), showHint && __jsx("div", {
+    className: "nes-balloon hint from-right text-xs bottom-0 right-0 flex",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 17
+    }
+  }, __jsx("span", {
+    className: "self-center",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 21
+    }
+  }, "Do you need a hint?"), __jsx("img", {
+    src: "hint.png",
+    className: " w-auto h-8 md:h-10  md:ml-2 self-center animateOpacity",
+    style: {
+      imageRendering: 'pixelated'
+    },
+    onClick: onHintClick,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 21
+    }
+  }))), passed && __jsx("div", {
     className: "text-left flex flex-col sm:flex-row mt-2 lg:mt-0",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 83,
       columnNumber: 13
     }
   }, result.missed && __jsx("div", {
-    className: "self-center nes-badge wide",
+    className: "self-center nes-badge wide custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 84,
       columnNumber: 33
     }
   }, __jsx("span", {
@@ -630,15 +682,15 @@ function GuessRow({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 77
+      lineNumber: 84,
+      columnNumber: 94
     }
   }, "Ups! you missed it!")), result.plus && __jsx("div", {
-    className: "self-center nes-badge plus",
+    className: "self-center nes-badge plus custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 85,
       columnNumber: 31
     }
   }, __jsx("span", {
@@ -646,15 +698,15 @@ function GuessRow({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 75
+      lineNumber: 85,
+      columnNumber: 92
     }
   }, `${result.plus} cuk!`)), result.minus && __jsx("div", {
-    className: "self-center nes-badge wide",
+    className: "self-center nes-badge wide custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 86,
       columnNumber: 32
     }
   }, __jsx("span", {
@@ -662,8 +714,8 @@ function GuessRow({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 76
+      lineNumber: 86,
+      columnNumber: 93
     }
   }, `${result.minus} position wrong!`))));
 }
@@ -975,11 +1027,7 @@ function SettingsTool() {
       columnNumber: 12
     }
   }, !gameStarted && __jsx("div", {
-    className: "w-full flex flex-col md:flex-col",
-    style: {
-      opacity: 1,
-      transition: 'opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
-    },
+    className: "w-full flex flex-col md:flex-col transition",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -1040,6 +1088,7 @@ const initialState = {
   player: 'single',
   digits: 4,
   rounds: 0,
+  hintsGiven: [],
   gameStarted: false,
   numberArray: null,
   gameResult: null
@@ -1080,6 +1129,21 @@ function reducer(state, action) {
         gameResult: action.value ? 'won' : 'lost'
       });
 
+    case 'GIVE_HINT':
+      let given = null;
+      const newArray = state.numberArray.map(number => {
+        if (!given && number.hidden) {
+          number.hidden = false;
+          given = number.value;
+        }
+
+        return number;
+      });
+      return _objectSpread({}, state, {
+        numberArray: newArray,
+        hintsGiven: [...state.hintsGiven, given]
+      });
+
     case 'RESET':
       return _objectSpread({}, initialState);
 
@@ -1101,6 +1165,7 @@ GameContext.displayName = 'GameContext';
     gameStarted: state.gameStarted,
     numberArray: state.numberArray,
     gameResult: state.gameResult,
+    hintsGiven: state.hintsGiven,
     setPlayer: value => dispatch({
       type: 'SET_PLAYER',
       value: value
@@ -1119,6 +1184,9 @@ GameContext.displayName = 'GameContext';
     startGame: () => dispatch({
       type: 'START_GAME'
     }),
+    giveHint: () => dispatch({
+      type: 'GIVE_HINT'
+    }),
     endGame: value => dispatch({
       type: 'END_GAME',
       value: value
@@ -1129,7 +1197,7 @@ GameContext.displayName = 'GameContext';
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 142,
       columnNumber: 5
     }
   }, children);

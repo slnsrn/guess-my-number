@@ -23,19 +23,19 @@ const createControlArray =(numberArray:{value: string, hidden:boolean}[])=>{
 }
 
 export default function GameBoard (){
-    const { digits, rounds, gameStarted, resetGame, numberArray, endGame, gameResult,} = useContext(GameContext)
+    const { digits, rounds, gameStarted, resetGame, numberArray, endGame, gameResult} = useContext(GameContext)
     const [guesses, setGuesses] = useState<Guess[]>([{...defaultGuess}])
     const [partyModeOn, setPartyModeOn] = useState(false)
     const { scrollTop } =useUtils()
 
-    useEffect(()=>{
+    const returnGuessRow = (guess:Guess)=> <GuessRow key={guess.round} guess={guess} guessNumber={guessNumber} currentRound={guesses.length}/>
 
+    useEffect(()=>{
+        //reset the game
         setGuesses([{...defaultGuess}])
 
     },[gameStarted])
 
-
-    const returnGuessRow = (guess:Guess)=> <GuessRow key={guess.round} guess={guess} guessNumber={guessNumber}/>
 
     const guessNumber =(guessArray:string[])=>{
         const controlArray = createControlArray(numberArray!)
@@ -104,7 +104,6 @@ export default function GameBoard (){
                     </div>
                 </div>
             <i className="-mt-8 nes-octocat animate"></i>
-            {!gameResult && rounds !== 0 && remainingRounds <=2 && <span className='ml-2 nes-text is-error'>{`Ups! You have ${remainingRounds} rounds left.`}</span>}
             {gameResult ==='won' && <Confetti/>}
             <SettingsTool/>
             <NumberSign/>

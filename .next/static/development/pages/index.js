@@ -190,23 +190,25 @@ function GameBoard() {
   var _useUtils = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_3__["default"])(),
       scrollTop = _useUtils.scrollTop;
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    setGuesses([_objectSpread({}, defaultGuess)]);
-  }, [gameStarted]);
-
   var returnGuessRow = function returnGuessRow(guess) {
     return __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: guess.round,
       guess: guess,
       guessNumber: guessNumber,
+      currentRound: guesses.length,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 31,
         columnNumber: 44
       }
     });
   };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    //reset the game
+    setGuesses([_objectSpread({}, defaultGuess)]);
+  }, [gameStarted]);
 
   var guessNumber = function guessNumber(guessArray) {
     var controlArray = createControlArray(numberArray);
@@ -324,40 +326,32 @@ function GameBoard() {
       lineNumber: 106,
       columnNumber: 13
     }
-  }), !gameResult && rounds !== 0 && remainingRounds <= 2 && __jsx("span", {
-    className: "ml-2 nes-text is-error",
+  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_9__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 107,
-      columnNumber: 68
-    }
-  }, "Ups! You have ".concat(remainingRounds, " rounds left.")), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108,
       columnNumber: 37
     }
   }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 108,
       columnNumber: 13
     }
   }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 109,
       columnNumber: 13
     }
   }), gameStarted && __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
+      lineNumber: 110,
       columnNumber: 29
     }
   }, guesses.map(returnGuessRow), __jsx("div", {
@@ -365,7 +359,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 112,
       columnNumber: 17
     }
   }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -374,7 +368,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 112,
       columnNumber: 39
     }
   }))))), __jsx("label", {
@@ -382,7 +376,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 117,
       columnNumber: 9
     }
   }, __jsx("input", {
@@ -397,14 +391,14 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 118,
       columnNumber: 13
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 119,
       columnNumber: 13
     }
   }, "Enable party mode")));
@@ -422,30 +416,42 @@ function GameBoard() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuessRow; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/GuessRow.tsx";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 function GuessRow(_ref) {
   var guess = _ref.guess,
-      guessNumber = _ref.guessNumber;
+      guessNumber = _ref.guessNumber,
+      currentRound = _ref.currentRound;
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_1__["GameContext"]),
-      digits = _useContext.digits;
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_3__["GameContext"]),
+      digits = _useContext.digits,
+      giveHint = _useContext.giveHint,
+      hintsGiven = _useContext.hintsGiven;
 
   var round = guess.round,
       result = guess.result,
       value = guess.value,
       passed = guess.passed;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(value),
       inputValue = _useState[0],
       setInputValue = _useState[1];
 
-  var inputRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      hintGiven = _useState2[0],
+      setHintGiven = _useState2[1];
+
+  var inputRef = react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
 
   var handleUserKeyPress = function handleUserKeyPress(event) {
     var keyCode = event.keyCode;
@@ -455,7 +461,7 @@ function GuessRow(_ref) {
     }
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     window.addEventListener("keydown", handleUserKeyPress);
     return function () {
       window.removeEventListener("keydown", handleUserKeyPress);
@@ -472,13 +478,32 @@ function GuessRow(_ref) {
     guessNumber(inputValue);
   };
 
+  var onHintClick = function onHintClick() {
+    setHintGiven(true);
+    giveHint();
+  };
+
+  var onFocus = function onFocus() {
+    if (inputValue.length === 0 && hintGiven) {
+      setInputValue(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(hintsGiven));
+    }
+  };
+
+  var placeholder = Array.from({
+    length: digits
+  }, function (item, i) {
+    return hintsGiven[i] || 'X';
+  }).join(' ');
   var id = "guessInput".concat(round);
+  var showHint = !passed && !hintGiven && currentRound > 2 && hintsGiven.length < digits - 1;
   return __jsx("div", {
-    className: "flex flex-col sm:flex-row mx-auto mb-6",
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()({
+      'relative pb-32': currentRound > 2 && !passed
+    }, 'flex flex-col sm:flex-row mx-auto mb-4'),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -486,16 +511,16 @@ function GuessRow(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 56,
       columnNumber: 11
     }
   }, __jsx("div", {
-    className: "w-56 mr-4",
+    className: "w-56 mr-2 lg:mr-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 11
+      lineNumber: 57,
+      columnNumber: 13
     }
   }, __jsx("input", {
     autoFocus: true,
@@ -504,22 +529,23 @@ function GuessRow(_ref) {
     className: "nes-input focus:outline-none text-center custom-padding",
     disabled: passed,
     type: "tel",
-    placeholder: "Round ".concat(round),
+    placeholder: placeholder,
     id: id,
     value: inputValue.join(' '),
     onChange: function onChange(event) {
       return handleChange(event.target.value);
     },
     maxLength: digits * 2 - 1,
+    onFocus: onFocus,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 13
+      lineNumber: 58,
+      columnNumber: 15
     }
   })), !passed && __jsx("img", {
     src: "press.png",
-    className: "ml-2 w-auto h-12",
+    className: "w-auto h-10 md:h-12",
     style: {
       imageRendering: 'pixelated'
     },
@@ -527,23 +553,52 @@ function GuessRow(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 23
+      lineNumber: 74,
+      columnNumber: 17
     }
-  })), passed && __jsx("div", {
+  }), showHint && __jsx("div", {
+    className: "nes-balloon hint from-right text-xs bottom-0 right-0 flex",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 17
+    }
+  }, __jsx("span", {
+    className: "self-center",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 21
+    }
+  }, "Do you need a hint?"), __jsx("img", {
+    src: "hint.png",
+    className: " w-auto h-8 md:h-10  md:ml-2 self-center animateOpacity",
+    style: {
+      imageRendering: 'pixelated'
+    },
+    onClick: onHintClick,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 21
+    }
+  }))), passed && __jsx("div", {
     className: "text-left flex flex-col sm:flex-row mt-2 lg:mt-0",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 83,
       columnNumber: 13
     }
   }, result.missed && __jsx("div", {
-    className: "self-center nes-badge wide",
+    className: "self-center nes-badge wide custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 84,
       columnNumber: 33
     }
   }, __jsx("span", {
@@ -551,15 +606,15 @@ function GuessRow(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 77
+      lineNumber: 84,
+      columnNumber: 94
     }
   }, "Ups! you missed it!")), result.plus && __jsx("div", {
-    className: "self-center nes-badge plus",
+    className: "self-center nes-badge plus custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 85,
       columnNumber: 31
     }
   }, __jsx("span", {
@@ -567,15 +622,15 @@ function GuessRow(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 75
+      lineNumber: 85,
+      columnNumber: 92
     }
   }, "".concat(result.plus, " cuk!"))), result.minus && __jsx("div", {
-    className: "self-center nes-badge wide",
+    className: "self-center nes-badge wide custom-font-size",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 86,
       columnNumber: 32
     }
   }, __jsx("span", {
@@ -583,8 +638,8 @@ function GuessRow(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 76
+      lineNumber: 86,
+      columnNumber: 93
     }
   }, "".concat(result.minus, " position wrong!")))));
 }
@@ -923,11 +978,7 @@ function SettingsTool() {
       columnNumber: 12
     }
   }, !gameStarted && __jsx("div", {
-    className: "w-full flex flex-col md:flex-col",
-    style: {
-      opacity: 1,
-      transition: 'opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
-    },
+    className: "w-full flex flex-col md:flex-col transition",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -959,20 +1010,22 @@ function SettingsTool() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameContext", function() { return GameContext; });
 /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 var _this = undefined,
     _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/context/GameContext.tsx";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
@@ -993,6 +1046,7 @@ var initialState = {
   player: 'single',
   digits: 4,
   rounds: 0,
+  hintsGiven: [],
   gameStarted: false,
   numberArray: null,
   gameResult: null
@@ -1033,6 +1087,21 @@ function reducer(state, action) {
         gameResult: action.value ? 'won' : 'lost'
       });
 
+    case 'GIVE_HINT':
+      var given = null;
+      var newArray = state.numberArray.map(function (number) {
+        if (!given && number.hidden) {
+          number.hidden = false;
+          given = number.value;
+        }
+
+        return number;
+      });
+      return _objectSpread({}, state, {
+        numberArray: newArray,
+        hintsGiven: [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.hintsGiven), [given])
+      });
+
     case 'RESET':
       return _objectSpread({}, initialState);
 
@@ -1041,12 +1110,12 @@ function reducer(state, action) {
   }
 }
 
-var GameContext = react__WEBPACK_IMPORTED_MODULE_2___default.a.createContext(null);
+var GameContext = react__WEBPACK_IMPORTED_MODULE_3___default.a.createContext(null);
 GameContext.displayName = 'GameContext';
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var children = _ref.children;
 
-  var _React$useReducer = react__WEBPACK_IMPORTED_MODULE_2___default.a.useReducer(reducer, initialState),
+  var _React$useReducer = react__WEBPACK_IMPORTED_MODULE_3___default.a.useReducer(reducer, initialState),
       _React$useReducer2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_React$useReducer, 2),
       state = _React$useReducer2[0],
       dispatch = _React$useReducer2[1];
@@ -1058,6 +1127,7 @@ GameContext.displayName = 'GameContext';
     gameStarted: state.gameStarted,
     numberArray: state.numberArray,
     gameResult: state.gameResult,
+    hintsGiven: state.hintsGiven,
     setPlayer: function setPlayer(value) {
       return dispatch({
         type: 'SET_PLAYER',
@@ -1086,6 +1156,11 @@ GameContext.displayName = 'GameContext';
         type: 'START_GAME'
       });
     },
+    giveHint: function giveHint() {
+      return dispatch({
+        type: 'GIVE_HINT'
+      });
+    },
     endGame: function endGame(value) {
       return dispatch({
         type: 'END_GAME',
@@ -1098,7 +1173,7 @@ GameContext.displayName = 'GameContext';
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 142,
       columnNumber: 5
     }
   }, children);
@@ -1194,6 +1269,24 @@ function _arrayWithHoles(arr) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayWithoutHoles; });
+/* harmony import */ var _arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(arr);
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
@@ -1217,6 +1310,22 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _iterableToArray; });
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 
 /***/ }),
@@ -1276,6 +1385,22 @@ function _nonIterableRest() {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _nonIterableSpread; });
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
@@ -1320,6 +1445,30 @@ function _taggedTemplateLiteral(strings, raw) {
       value: Object.freeze(raw)
     }
   }));
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _toConsumableArray; });
+/* harmony import */ var _arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js");
+/* harmony import */ var _iterableToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js");
+/* harmony import */ var _unsupportedIterableToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js");
+/* harmony import */ var _nonIterableSpread__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js");
+
+
+
+
+function _toConsumableArray(arr) {
+  return Object(_arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || Object(_iterableToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(arr) || Object(_unsupportedIterableToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(arr) || Object(_nonIterableSpread__WEBPACK_IMPORTED_MODULE_3__["default"])();
 }
 
 /***/ }),

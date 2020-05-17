@@ -33,7 +33,7 @@ export default function SettingsTool () {
 
     return <div  className='mt-4 w-full'>
             {!gameStarted &&
-               <div className='w-full flex flex-col md:flex-col' style={{opacity: 1, transition: 'opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'}}>
+               <div className='w-full flex flex-col md:flex-col transition'>
                    {digitChoices}
                    {roundChoices}
                </div>}

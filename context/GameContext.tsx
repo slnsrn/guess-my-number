@@ -19,6 +19,7 @@ interface State {
   rounds: Round,
   gameStarted: boolean
   numberArray: NumberArray|null,
+  hintsGiven: string[],
   gameResult:'won'|'lost'|null
 }
 
@@ -26,6 +27,7 @@ const initialState:State = {
   player: 'single',
   digits: 4,
   rounds: 0,
+  hintsGiven:[],
   gameStarted:false,
   numberArray: null,
   gameResult: null,
@@ -36,6 +38,7 @@ type Action = {type: 'SET_PLAYER', value: Player}
             | {type: 'SET_ROUNDS', value: Round}
             | {type: 'END_GAME', value:boolean}
             | {type: 'START_GAME'}
+            | {type: 'GIVE_HINT'}
             | {type: 'RESET' }
 
 function reducer(state:State, action:Action):State {
@@ -56,6 +59,20 @@ function reducer(state:State, action:Action):State {
           numberArray: state.numberArray?.map(el=>{return {...el, hidden:false}})!,
           gameResult: action.value ? 'won':'lost'
         }
+    case 'GIVE_HINT':
+        let given:string|null= null
+        const newArray = state.numberArray!.map(number=>{
+          if(!given && number.hidden){
+            number.hidden=false
+
+            given=number.value
+          }
+          return number
+        })
+        return {...state,
+          numberArray: newArray,
+          hintsGiven:[...state.hintsGiven, given!]
+        }
     case 'RESET':
       return {...initialState}
     default:
@@ -70,6 +87,7 @@ type ContextValue = State & {
   endGame(value:boolean): void
   resetGame(): void
   startGame(): void
+  giveHint(): void
 }
 
 export const GameContext = React.createContext<ContextValue>(null!)
@@ -85,6 +103,7 @@ export default ({children}:{children:React.ReactNode}) => {
     gameStarted: state.gameStarted,
     numberArray: state.numberArray,
     gameResult: state.gameResult,
+    hintsGiven:state.hintsGiven,
     setPlayer: (value:Player) =>
       dispatch({
         type: 'SET_PLAYER',
@@ -107,6 +126,10 @@ export default ({children}:{children:React.ReactNode}) => {
     startGame: () =>
       dispatch({
         type: 'START_GAME'
+      }),
+    giveHint: () =>
+      dispatch({
+        type: 'GIVE_HINT'
       }),
     endGame:(value:boolean) =>
       dispatch({
