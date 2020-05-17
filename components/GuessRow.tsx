@@ -47,7 +47,7 @@ export default function GuessRow ({guess, guessNumber}:{guess:Guess, guessNumber
               autoFocus
               autoComplete='off'
               ref={inputRef}
-              className='nes-input focus:outline-none text-center py-1'
+              className='nes-input focus:outline-none text-center custom-padding'
               disabled={passed}
               type='tel'
               placeholder={`Round ${round}`}
@@ -61,9 +61,9 @@ export default function GuessRow ({guess, guessNumber}:{guess:Guess, guessNumber
           </div>
           {passed &&
             <div className='text-left flex flex-col sm:flex-row mt-2 lg:mt-0'>
-              {result.missed && <div className='self-center nes-badge'><span className="is-error">Ups! you missed it!</span></div>}
+              {result.missed && <div className='self-center nes-badge wide'><span className="is-error">Ups! you missed it!</span></div>}
               {result.plus && <div className='self-center nes-badge plus'><span className="is-success">{`${result.plus} cuk!`}</span></div>}
-              {result.minus && <div className='self-center nes-badge'><span className="is-warning">{`${result.minus} position wrong!`}</span></div>}
+              {result.minus && <div className='self-center nes-badge wide'><span className="is-warning">{`${result.minus} position wrong!`}</span></div>}
             </div>}
       </div>)
 }

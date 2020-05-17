@@ -96,7 +96,7 @@ export default function GameBoard (){
     <>
         {partyModeOn && <PartyBackground/>}
         <div className='px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto'>
-            <div className="nes-container px-4 py-6 lg:px-8 with-title">
+            <div className="nes-container custom-padding with-title">
                 <p className="title">A Cool's Game</p>
                 <div className=" ml-12 md:ml-20 mt-12 md:mt-8 flex">
                     <div className="nes-balloon from-left">

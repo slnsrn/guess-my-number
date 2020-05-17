@@ -277,7 +277,7 @@ function GameBoard() {
       columnNumber: 9
     }
   }, __jsx("div", {
-    className: "nes-container px-4 py-6 lg:px-8 with-title",
+    className: "nes-container custom-padding with-title",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -501,7 +501,7 @@ function GuessRow(_ref) {
     autoFocus: true,
     autoComplete: "off",
     ref: inputRef,
-    className: "nes-input focus:outline-none text-center py-1",
+    className: "nes-input focus:outline-none text-center custom-padding",
     disabled: passed,
     type: "tel",
     placeholder: "Round ".concat(round),
@@ -539,7 +539,7 @@ function GuessRow(_ref) {
       columnNumber: 13
     }
   }, result.missed && __jsx("div", {
-    className: "self-center nes-badge",
+    className: "self-center nes-badge wide",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -552,7 +552,7 @@ function GuessRow(_ref) {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64,
-      columnNumber: 72
+      columnNumber: 77
     }
   }, "Ups! you missed it!")), result.plus && __jsx("div", {
     className: "self-center nes-badge plus",
@@ -571,7 +571,7 @@ function GuessRow(_ref) {
       columnNumber: 75
     }
   }, "".concat(result.plus, " cuk!"))), result.minus && __jsx("div", {
-    className: "self-center nes-badge",
+    className: "self-center nes-badge wide",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -584,7 +584,7 @@ function GuessRow(_ref) {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 66,
-      columnNumber: 71
+      columnNumber: 76
     }
   }, "".concat(result.minus, " position wrong!")))));
 }
@@ -629,7 +629,7 @@ function NumberSign() {
       className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
         'is-error': gameResult === 'lost',
         'text-reddish': gameResult === 'won'
-      }, 'nes-input text-center text-xl py-1'),
+      }, 'nes-input text-center text-xl custom-padding'),
       disabled: true,
       value: digit.hidden ? '?' : digit.value,
       __self: _this,
@@ -837,7 +837,7 @@ function SettingsTool() {
       }
     }, __jsx("input", {
       type: "radio",
-      className: "nes-radio",
+      className: "nes-radio pink",
       checked: digit === digits,
       onChange: function onChange(event) {
         setDigits(parseInt(event.target.value));
@@ -854,7 +854,7 @@ function SettingsTool() {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 20,
-        columnNumber: 283
+        columnNumber: 288
       }
     }, "".concat(digit, " digits")));
   }));
@@ -887,7 +887,7 @@ function SettingsTool() {
       }
     }, __jsx("input", {
       type: "radio",
-      className: "nes-radio",
+      className: "nes-radio pink",
       checked: round === rounds,
       onChange: function onChange(event) {
         setRounds(parseInt(event.target.value));
@@ -904,7 +904,7 @@ function SettingsTool() {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 25,
-        columnNumber: 283
+        columnNumber: 288
       }
     }, round === 0 ? 'unlimited' : "".concat(round, " rounds")));
   }));
@@ -4192,12 +4192,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 11,
       columnNumber: 9
     }
+  }), __jsx("link", {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css?family=Press+Start+2P",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
   })), __jsx("div", {
     className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 5
     }
   }, __jsx("h1", {
@@ -4205,14 +4214,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 7
     }
   }, "Guess my number"), __jsx(_components_GameBoard__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 7
     }
   })));
