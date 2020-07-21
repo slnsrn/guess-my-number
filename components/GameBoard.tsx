@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from 'react'
+import cx from 'classnames'
 
 import {GameContext} from '../context/GameContext'
-import useUtils from '../hooks/useUtils'
+import {scrollTop} from '../utils'
 
 import GuessRow from './GuessRow'
 import Button from './Button'
@@ -26,7 +27,6 @@ export default function GameBoard (){
     const { digits, rounds, gameStarted, resetGame, numberArray, endGame, gameResult} = useContext(GameContext)
     const [guesses, setGuesses] = useState<Guess[]>([{...defaultGuess}])
     const [partyModeOn, setPartyModeOn] = useState(false)
-    const { scrollTop } =useUtils()
 
     const returnGuessRow = (guess:Guess)=> <GuessRow key={guess.round} guess={guess} guessNumber={guessNumber} currentRound={guesses.length}/>
 
@@ -84,7 +84,6 @@ export default function GameBoard (){
         setGuesses(newList)
 
     }
-    const remainingRounds = rounds - guesses.length
 
     const myMessage = !gameResult
                         ? ( gameStarted
@@ -92,24 +91,47 @@ export default function GameBoard (){
                                 :'Set your preferences and start playing!')
                         : `You have ${gameResult}!`
 
+
+    const returnInstructions = ()=>{
+        if(!gameStarted || !!gameResult) return
+
+        return (<div className='text-xs lg:text-sm'>
+        <span className='self-center'>When you have </span>
+        <div className='flex flex-col lg:flex-row pl-2 lg:pl-12'>
+            <span className='self-center lg:mr-4'>a match: </span>
+            <div className='self-center nes-badge plus'><span className="is-success">cuk!</span></div>
+        </div>
+        <div className='flex flex-col lg:flex-row  pl-2 lg:pl-12'>
+            <span className='self-center lg:mr-4'>a wrong placed: </span>
+            <div className='self-center nes-badge wide'><span className="is-warning">position wrong!</span></div>
+        </div>
+        <div className='flex flex-col lg:flex-row  pl-2 lg:pl-12'>
+            <span className='self-center lg:mr-4'>no match: </span>
+            <div className='self-center nes-badge wide'><span className="is-error">Ups! you missed it!</span></div>
+        </div>
+    </div>)
+    }
+
   return (
     <>
-        {partyModeOn && <PartyBackground/>}
+        <div className={cx({'hidden': !partyModeOn}, 'w-full h-full top-0 left-0')}><PartyBackground/></div>
         <div className='px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto'>
             <div className="nes-container custom-padding with-title">
                 <p className="title">A Cool's Game</p>
                 <div className=" ml-12 md:ml-20 mt-12 md:mt-8 flex">
                     <div className="nes-balloon from-left">
                         <p className='text-sm md:text-base'>{myMessage}</p>
+                        {returnInstructions()}
                     </div>
                 </div>
             <i className="-mt-8 nes-octocat animate"></i>
             {gameResult ==='won' && <Confetti/>}
             <SettingsTool/>
             <NumberSign/>
-            {gameStarted && <div>
+            {gameStarted &&
+            <div>
                 {guesses.map(returnGuessRow)}
-                <div className='pt-8'><Button onClick={resetGame} label='Reset game'/></div>
+                <div className='pt-16'><Button onClick={resetGame} label='Reset game'/></div>
             </div>
             }
             </div>

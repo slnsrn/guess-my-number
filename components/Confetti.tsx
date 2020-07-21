@@ -1,12 +1,10 @@
-import { useEffect} from 'react'
+import { useEffect, useContext} from 'react'
 
-import useUtils from '../hooks/useUtils'
+import {rnd} from '../utils'
 
 let containerWidth:number
 
 export default function Confetti() {
-
-    const {windowWidth, rnd} = useUtils()
 
     useEffect(()=>{
         containerWidth = document.getElementsByClassName('nes-container')[0].clientWidth - 50
@@ -15,9 +13,10 @@ export default function Confetti() {
     const confetti = (i:number)  =>{
        return (<span key={i} className={`particle c${rnd(1,4)}`} style={{top:rnd(10,50), left:rnd(0,containerWidth), width: rnd(6,8)+'px', height: rnd(3,4) + 'px', animationDelay: (rnd(0,30)/10)  + 's'}}></span>)
     }
+    if (!process.browser) return null
 
     return (
         <div className='confetti relative h-4'>
-           {Array.from({length: (windowWidth!/50)*10}, (item, i) => confetti(i))}
+           {Array.from({length: (window.innerWidth!/50)*10}, (item, i) => confetti(i))}
         </div>)
  }

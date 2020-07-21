@@ -149,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Confetti; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/Confetti.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -157,10 +157,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 let containerWidth;
 function Confetti() {
-  const {
-    windowWidth,
-    rnd
-  } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     containerWidth = document.getElementsByClassName('nes-container')[0].clientWidth - 50;
   }, []);
@@ -168,33 +164,34 @@ function Confetti() {
   const confetti = i => {
     return __jsx("span", {
       key: i,
-      className: `particle c${rnd(1, 4)}`,
+      className: `particle c${Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(1, 4)}`,
       style: {
-        top: rnd(10, 50),
-        left: rnd(0, containerWidth),
-        width: rnd(6, 8) + 'px',
-        height: rnd(3, 4) + 'px',
-        animationDelay: rnd(0, 30) / 10 + 's'
+        top: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(10, 50),
+        left: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(0, containerWidth),
+        width: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(6, 8) + 'px',
+        height: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(3, 4) + 'px',
+        animationDelay: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(0, 30) / 10 + 's'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16,
+        lineNumber: 14,
         columnNumber: 16
       }
     });
   };
 
+  if (true) return null;
   return __jsx("div", {
     className: "confetti relative h-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 19,
       columnNumber: 9
     }
   }, Array.from({
-    length: windowWidth / 50 * 10
+    length: window.innerWidth / 50 * 10
   }, (item, i) => confetti(i)));
 }
 
@@ -212,14 +209,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GameBoard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
-/* harmony import */ var _GuessRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GuessRow */ "./components/GuessRow.tsx");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
-/* harmony import */ var _SettingsTool__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsTool */ "./components/SettingsTool.tsx");
-/* harmony import */ var _NumberSign__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NumberSign */ "./components/NumberSign.tsx");
-/* harmony import */ var _PartyBackground__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PartyBackground */ "./components/PartyBackground.tsx");
-/* harmony import */ var _Confetti__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Confetti */ "./components/Confetti.tsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
+/* harmony import */ var _GuessRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GuessRow */ "./components/GuessRow.tsx");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
+/* harmony import */ var _SettingsTool__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SettingsTool */ "./components/SettingsTool.tsx");
+/* harmony import */ var _NumberSign__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NumberSign */ "./components/NumberSign.tsx");
+/* harmony import */ var _PartyBackground__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PartyBackground */ "./components/PartyBackground.tsx");
+/* harmony import */ var _Confetti__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Confetti */ "./components/Confetti.tsx");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/GameBoard.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -229,6 +228,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -264,7 +264,7 @@ function GameBoard() {
     numberArray,
     endGame,
     gameResult
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_1__["GameContext"]);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_2__["GameContext"]);
   const {
     0: guesses,
     1: setGuesses
@@ -273,11 +273,8 @@ function GameBoard() {
     0: partyModeOn,
     1: setPartyModeOn
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  const {
-    scrollTop
-  } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
-  const returnGuessRow = guess => __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  const returnGuessRow = guess => __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_4__["default"], {
     key: guess.round,
     guess: guess,
     guessNumber: guessNumber,
@@ -330,7 +327,7 @@ function GameBoard() {
 
     if (result.plus === digits || rounds === guesses.length) {
       endGame(result.plus === digits);
-      scrollTop();
+      Object(_utils__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
     } else {
       if (!rounds || guesses.length < rounds) {
         newList.push(_objectSpread({}, defaultGuess, {
@@ -342,21 +339,148 @@ function GameBoard() {
     setGuesses(newList);
   };
 
-  const remainingRounds = rounds - guesses.length;
   const myMessage = !gameResult ? gameStarted ? `You have ${rounds === 0 ? 'unlimited' : rounds} rounds to guess my number. Start writing your guess and see the results ;)` : 'Set your preferences and start playing!' : `You have ${gameResult}!`;
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, partyModeOn && __jsx(_PartyBackground__WEBPACK_IMPORTED_MODULE_7__["default"], {
+
+  const returnInstructions = () => {
+    if (!gameStarted || !!gameResult) return;
+    return __jsx("div", {
+      className: "text-xs lg:text-sm",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98,
+        columnNumber: 17
+      }
+    }, __jsx("span", {
+      className: "self-center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99,
+        columnNumber: 9
+      }
+    }, "When you have "), __jsx("div", {
+      className: "flex flex-col lg:flex-row pl-2 lg:pl-12",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 100,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101,
+        columnNumber: 13
+      }
+    }, "a match: "), __jsx("div", {
+      className: "self-center nes-badge plus",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-success",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102,
+        columnNumber: 57
+      }
+    }, "cuk!"))), __jsx("div", {
+      className: "flex flex-col lg:flex-row  pl-2 lg:pl-12",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105,
+        columnNumber: 13
+      }
+    }, "a wrong placed: "), __jsx("div", {
+      className: "self-center nes-badge wide",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-warning",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106,
+        columnNumber: 57
+      }
+    }, "position wrong!"))), __jsx("div", {
+      className: "flex flex-col lg:flex-row  pl-2 lg:pl-12",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109,
+        columnNumber: 13
+      }
+    }, "no match: "), __jsx("div", {
+      className: "self-center nes-badge wide",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-error",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110,
+        columnNumber: 57
+      }
+    }, "Ups! you missed it!"))));
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+      'hidden': !partyModeOn
+    }, 'w-full h-full top-0 left-0'),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
-      columnNumber: 25
+      lineNumber: 117,
+      columnNumber: 9
     }
-  }), __jsx("div", {
+  }, __jsx(_PartyBackground__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 85
+    }
+  })), __jsx("div", {
     className: "px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98,
+      lineNumber: 118,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -364,7 +488,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 119,
       columnNumber: 13
     }
   }, __jsx("p", {
@@ -372,7 +496,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 120,
       columnNumber: 17
     }
   }, "A Cool's Game"), __jsx("div", {
@@ -380,7 +504,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 121,
       columnNumber: 17
     }
   }, __jsx("div", {
@@ -388,7 +512,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 122,
       columnNumber: 21
     }
   }, __jsx("p", {
@@ -396,68 +520,68 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 123,
       columnNumber: 25
     }
-  }, myMessage))), __jsx("i", {
+  }, myMessage), returnInstructions())), __jsx("i", {
     className: "-mt-8 nes-octocat animate",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 127,
       columnNumber: 13
     }
-  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_9__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 128,
       columnNumber: 37
     }
-  }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 129,
       columnNumber: 13
     }
-  }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 130,
       columnNumber: 13
     }
   }), gameStarted && __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 29
+      lineNumber: 132,
+      columnNumber: 13
     }
   }, guesses.map(returnGuessRow), __jsx("div", {
-    className: "pt-8",
+    className: "pt-16",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 134,
       columnNumber: 17
     }
-  }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     onClick: resetGame,
     label: "Reset game",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
-      columnNumber: 39
+      lineNumber: 134,
+      columnNumber: 40
     }
   }))))), __jsx("label", {
     className: "w-full text-right mt-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 139,
       columnNumber: 9
     }
   }, __jsx("input", {
@@ -470,14 +594,14 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 140,
       columnNumber: 13
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 141,
       columnNumber: 13
     }
   }, "Enable party mode")));
@@ -796,7 +920,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/core */ "@emotion/core");
 /* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_emotion_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/debounce */ "lodash/debounce");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/PartyBackground.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -804,78 +930,99 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /** @jsx jsx */
 
 
+
+
 const colors = ['#e76e55', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
 const animation = ['shine2', 'shine1', 'shine3'];
+
+const createBall = windowValues => {
+  const w = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["rnd"])(0.5, 1);
+  const h = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["rnd"])(0.5, 1);
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const spanCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
+    color: ${color};
+    background-color: ${color};
+    box-shadow: 0 0.5em ${color}, 0 -0.5em ${color}, 0.5em 0 ${color}, -0.5em 0 ${color};`;
+  const containerCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
+        left: ${Math.random() * (window.innerWidth - 2)}px;
+        top: ${Math.random() * (window.innerHeight - 2)}px;`;
+  const ballCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
+        height: ${h}em;
+        transition-duration:.45s;
+        display:inline-block;
+        transition-duration:1.4s;
+        transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);
+        font-size: ${Object(_utils__WEBPACK_IMPORTED_MODULE_2__["rnd"])(6, 10)}px;
+        background:  ${color};
+        opacity: ${Math.random()};
+        animation: ${animation[Object(_utils__WEBPACK_IMPORTED_MODULE_2__["rnd"])(0, 2)]} 1s infinite;
+    `;
+  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    key: Math.random(),
+    className: "absolute",
+    css: containerCss,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 13
+    }
+  }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    css: ballCss,
+    className: "ball",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 78
+    }
+  }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("span", {
+    css: spanCss,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 114
+    }
+  }, "1")));
+};
+
 function PartyBackground() {
   const {
-    windowWidth,
-    windowHeight,
-    rnd
-  } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])();
-
-  const createBall = () => {
-    const w = rnd(0.5, 1);
-    const h = rnd(0.5, 1);
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const spanCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
-        color: ${color};
-        background-color: ${color};
-        box-shadow: 0 0.5em ${color}, 0 -0.5em ${color}, 0.5em 0 ${color}, -0.5em 0 ${color};`;
-    const containerCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
-            left: ${Math.random() * (windowWidth - 2)}px;
-            top: ${Math.random() * (windowHeight - 2)}px;`;
-    const ballCss = _emotion_core__WEBPACK_IMPORTED_MODULE_1__["css"]`
-            height: ${h}em;
-            transition-duration:.45s;
-            display:inline-block;
-            transition-duration:1.4s;
-            transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);
-            font-size: ${rnd(6, 10)}px;
-            background:  ${color};
-            opacity: ${Math.random()};
-            animation: ${animation[rnd(0, 2)]} 1s infinite;
-        `;
-    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      key: Math.random(),
-      className: "absolute",
-      css: containerCss,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 17
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      css: ballCss,
-      className: "ball",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 82
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("span", {
-      css: spanCss,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 118
-      }
-    }, "1")));
-  };
-
+    0: windowSize,
+    1: setWindowSize
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(() => false ? undefined : {
+    w: 0,
+    h: 0
+  });
+  const balls = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(() => {
+    if (false) {} else {
+      return [];
+    }
+  }, [windowSize]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (true) return;
+    const handleResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(() => {
+      if (window.innerHeight > windowSize.h || window.innerWidth > windowSize.w) setWindowSize({
+        w: window.innerWidth,
+        h: window.innerHeight
+      });
+    }, 100);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      handleResize.cancel();
+      window.removeEventListener('resize', handleResize);
+    };
+  });
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
     className: "fixed top-0 left-0 z-1-",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 77,
       columnNumber: 9
     }
-  }, Array.from({
-    length: 400
-  }, item => createBall()));
+  }, balls);
 }
 
 /***/ }),
@@ -893,7 +1040,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/SettingsTool.tsx";
 
@@ -913,16 +1060,13 @@ function SettingsTool() {
     setRounds,
     gameStarted
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_1__["GameContext"]);
-  const {
-    scrollTop
-  } = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
   const digitChoices = __jsx("div", {
     className: "my-4 w-full sm:w-1/2 md:w-full flex flex-col md:flex-row",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 16,
       columnNumber: 27
     }
   }, __jsx("span", {
@@ -930,7 +1074,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 17,
       columnNumber: 9
     }
   }, "Digits:"), availableDigits.map(digit => __jsx("label", {
@@ -939,7 +1083,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 18,
       columnNumber: 39
     }
   }, __jsx("input", {
@@ -953,14 +1097,14 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 18,
       columnNumber: 78
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 18,
       columnNumber: 288
     }
   }, `${digit} digits`))));
@@ -970,7 +1114,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 21,
       columnNumber: 27
     }
   }, __jsx("span", {
@@ -978,7 +1122,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, "Rounds:"), availableRounds.map(round => __jsx("label", {
@@ -987,7 +1131,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 23,
       columnNumber: 39
     }
   }, __jsx("input", {
@@ -1001,20 +1145,20 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 23,
       columnNumber: 79
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 23,
       columnNumber: 288
     }
   }, round === 0 ? 'unlimited' : `${round} rounds`))));
 
   const handleClick = () => {
-    scrollTop();
+    Object(_utils__WEBPACK_IMPORTED_MODULE_2__["scrollTop"])();
     startGame();
   };
 
@@ -1023,7 +1167,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 32,
       columnNumber: 12
     }
   }, !gameStarted && __jsx("div", {
@@ -1031,7 +1175,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 34,
       columnNumber: 16
     }
   }, digitChoices, roundChoices), !gameStarted && __jsx(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1040,7 +1184,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 38,
       columnNumber: 30
     }
   }));
@@ -1205,54 +1349,6 @@ GameContext.displayName = 'GameContext';
 
 /***/ }),
 
-/***/ "./hooks/useUtils.ts":
-/*!***************************!*\
-  !*** ./hooks/useUtils.ts ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useUtils; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function useUtils() {
-  const {
-    0: windowWidth,
-    1: setWindowWidth
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null);
-  const {
-    0: windowHeight,
-    1: setWindowHeight
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (window) {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    }
-  }, []);
-
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  const rnd = (m, n) => Math.floor(Math.random() * (n - m + 1)) + m;
-
-  return {
-    windowWidth,
-    windowHeight,
-    scrollTop,
-    rnd
-  };
-}
-
-/***/ }),
-
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -1324,12 +1420,22 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     lineNumber: 12,
     columnNumber: 9
   }
+}), __jsx("link", {
+  rel: "icon",
+  type: "image/png",
+  href: "press.png",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13,
+    columnNumber: 9
+  }
 })), __jsx("div", {
   className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 14,
+    lineNumber: 15,
     columnNumber: 5
   }
 }, __jsx("h1", {
@@ -1337,17 +1443,38 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 15,
+    lineNumber: 16,
     columnNumber: 7
   }
 }, "Guess my number"), __jsx(_components_GameBoard__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 16,
+    lineNumber: 17,
     columnNumber: 7
   }
 }))));
+
+/***/ }),
+
+/***/ "./utils/index.ts":
+/*!************************!*\
+  !*** ./utils/index.ts ***!
+  \************************/
+/*! exports provided: scrollTop, rnd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollTop", function() { return scrollTop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rnd", function() { return rnd; });
+const scrollTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+const rnd = (m, n) => Math.floor(Math.random() * (n - m + 1)) + m;
 
 /***/ }),
 
@@ -1382,6 +1509,17 @@ module.exports = require("@emotion/core");
 /***/ (function(module, exports) {
 
 module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "lodash/debounce":
+/*!**********************************!*\
+  !*** external "lodash/debounce" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash/debounce");
 
 /***/ }),
 

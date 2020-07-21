@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Confetti; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/Confetti.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -67,10 +67,6 @@ var containerWidth;
 function Confetti() {
   var _this = this;
 
-  var _useUtils = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_1__["default"])(),
-      windowWidth = _useUtils.windowWidth,
-      rnd = _useUtils.rnd;
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     containerWidth = document.getElementsByClassName('nes-container')[0].clientWidth - 50;
   }, []);
@@ -78,33 +74,34 @@ function Confetti() {
   var confetti = function confetti(i) {
     return __jsx("span", {
       key: i,
-      className: "particle c".concat(rnd(1, 4)),
+      className: "particle c".concat(Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(1, 4)),
       style: {
-        top: rnd(10, 50),
-        left: rnd(0, containerWidth),
-        width: rnd(6, 8) + 'px',
-        height: rnd(3, 4) + 'px',
-        animationDelay: rnd(0, 30) / 10 + 's'
+        top: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(10, 50),
+        left: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(0, containerWidth),
+        width: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(6, 8) + 'px',
+        height: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(3, 4) + 'px',
+        animationDelay: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["rnd"])(0, 30) / 10 + 's'
       },
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16,
+        lineNumber: 14,
         columnNumber: 16
       }
     });
   };
 
+  if (false) {}
   return __jsx("div", {
     className: "confetti relative h-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 19,
       columnNumber: 9
     }
   }, Array.from({
-    length: windowWidth / 50 * 10
+    length: window.innerWidth / 50 * 10
   }, function (item, i) {
     return confetti(i);
   }));
@@ -125,14 +122,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
-/* harmony import */ var _GuessRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GuessRow */ "./components/GuessRow.tsx");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
-/* harmony import */ var _SettingsTool__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SettingsTool */ "./components/SettingsTool.tsx");
-/* harmony import */ var _NumberSign__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NumberSign */ "./components/NumberSign.tsx");
-/* harmony import */ var _PartyBackground__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PartyBackground */ "./components/PartyBackground.tsx");
-/* harmony import */ var _Confetti__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Confetti */ "./components/Confetti.tsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
+/* harmony import */ var _GuessRow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GuessRow */ "./components/GuessRow.tsx");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
+/* harmony import */ var _SettingsTool__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SettingsTool */ "./components/SettingsTool.tsx");
+/* harmony import */ var _NumberSign__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./NumberSign */ "./components/NumberSign.tsx");
+/* harmony import */ var _PartyBackground__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./PartyBackground */ "./components/PartyBackground.tsx");
+/* harmony import */ var _Confetti__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Confetti */ "./components/Confetti.tsx");
 
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/GameBoard.tsx";
 
@@ -141,6 +140,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -170,7 +170,7 @@ var createControlArray = function createControlArray(numberArray) {
 function GameBoard() {
   var _this = this;
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_2__["GameContext"]),
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_GameContext__WEBPACK_IMPORTED_MODULE_3__["GameContext"]),
       digits = _useContext.digits,
       rounds = _useContext.rounds,
       gameStarted = _useContext.gameStarted,
@@ -187,11 +187,8 @@ function GameBoard() {
       partyModeOn = _useState2[0],
       setPartyModeOn = _useState2[1];
 
-  var _useUtils = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_3__["default"])(),
-      scrollTop = _useUtils.scrollTop;
-
   var returnGuessRow = function returnGuessRow(guess) {
-    return __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    return __jsx(_GuessRow__WEBPACK_IMPORTED_MODULE_5__["default"], {
       key: guess.round,
       guess: guess,
       guessNumber: guessNumber,
@@ -249,7 +246,7 @@ function GameBoard() {
 
     if (result.plus === digits || rounds === guesses.length) {
       endGame(result.plus === digits);
-      scrollTop();
+      Object(_utils__WEBPACK_IMPORTED_MODULE_4__["scrollTop"])();
     } else {
       if (!rounds || guesses.length < rounds) {
         newList.push(_objectSpread({}, defaultGuess, {
@@ -261,21 +258,148 @@ function GameBoard() {
     setGuesses(newList);
   };
 
-  var remainingRounds = rounds - guesses.length;
   var myMessage = !gameResult ? gameStarted ? "You have ".concat(rounds === 0 ? 'unlimited' : rounds, " rounds to guess my number. Start writing your guess and see the results ;)") : 'Set your preferences and start playing!' : "You have ".concat(gameResult, "!");
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, partyModeOn && __jsx(_PartyBackground__WEBPACK_IMPORTED_MODULE_8__["default"], {
+
+  var returnInstructions = function returnInstructions() {
+    if (!gameStarted || !!gameResult) return;
+    return __jsx("div", {
+      className: "text-xs lg:text-sm",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98,
+        columnNumber: 17
+      }
+    }, __jsx("span", {
+      className: "self-center",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99,
+        columnNumber: 9
+      }
+    }, "When you have "), __jsx("div", {
+      className: "flex flex-col lg:flex-row pl-2 lg:pl-12",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 100,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101,
+        columnNumber: 13
+      }
+    }, "a match: "), __jsx("div", {
+      className: "self-center nes-badge plus",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-success",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102,
+        columnNumber: 57
+      }
+    }, "cuk!"))), __jsx("div", {
+      className: "flex flex-col lg:flex-row  pl-2 lg:pl-12",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105,
+        columnNumber: 13
+      }
+    }, "a wrong placed: "), __jsx("div", {
+      className: "self-center nes-badge wide",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-warning",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106,
+        columnNumber: 57
+      }
+    }, "position wrong!"))), __jsx("div", {
+      className: "flex flex-col lg:flex-row  pl-2 lg:pl-12",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108,
+        columnNumber: 9
+      }
+    }, __jsx("span", {
+      className: "self-center lg:mr-4",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109,
+        columnNumber: 13
+      }
+    }, "no match: "), __jsx("div", {
+      className: "self-center nes-badge wide",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110,
+        columnNumber: 13
+      }
+    }, __jsx("span", {
+      className: "is-error",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110,
+        columnNumber: 57
+      }
+    }, "Ups! you missed it!"))));
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()({
+      'hidden': !partyModeOn
+    }, 'w-full h-full top-0 left-0'),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
-      columnNumber: 25
+      lineNumber: 117,
+      columnNumber: 9
     }
-  }), __jsx("div", {
+  }, __jsx(_PartyBackground__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 85
+    }
+  })), __jsx("div", {
     className: "px-4 py-6 lg:px-20 md:py-8 shadow bg-white w-full sm-grid-sm md:w-grid-md lg:w-grid-lg xl:w-grid-xl mx-auto",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98,
+      lineNumber: 118,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -283,7 +407,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 119,
       columnNumber: 13
     }
   }, __jsx("p", {
@@ -291,7 +415,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 120,
       columnNumber: 17
     }
   }, "A Cool's Game"), __jsx("div", {
@@ -299,7 +423,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 121,
       columnNumber: 17
     }
   }, __jsx("div", {
@@ -307,7 +431,7 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 122,
       columnNumber: 21
     }
   }, __jsx("p", {
@@ -315,68 +439,68 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 123,
       columnNumber: 25
     }
-  }, myMessage))), __jsx("i", {
+  }, myMessage), returnInstructions())), __jsx("i", {
     className: "-mt-8 nes-octocat animate",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 127,
       columnNumber: 13
     }
-  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), gameResult === 'won' && __jsx(_Confetti__WEBPACK_IMPORTED_MODULE_10__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 128,
       columnNumber: 37
     }
-  }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), __jsx(_SettingsTool__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 129,
       columnNumber: 13
     }
-  }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), __jsx(_NumberSign__WEBPACK_IMPORTED_MODULE_8__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 130,
       columnNumber: 13
     }
   }), gameStarted && __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 29
+      lineNumber: 132,
+      columnNumber: 13
     }
   }, guesses.map(returnGuessRow), __jsx("div", {
-    className: "pt-8",
+    className: "pt-16",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 134,
       columnNumber: 17
     }
-  }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_Button__WEBPACK_IMPORTED_MODULE_6__["default"], {
     onClick: resetGame,
     label: "Reset game",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
-      columnNumber: 39
+      lineNumber: 134,
+      columnNumber: 40
     }
   }))))), __jsx("label", {
     className: "w-full text-right mt-4",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 139,
       columnNumber: 9
     }
   }, __jsx("input", {
@@ -391,14 +515,14 @@ function GameBoard() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 140,
       columnNumber: 13
     }
   }), __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 141,
       columnNumber: 13
     }
   }, "Enable party mode")));
@@ -723,14 +847,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_4__);
 
-var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/PartyBackground.tsx";
+
+var _this = undefined,
+    _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/PartyBackground.tsx";
+
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 function _templateObject3() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n            height: ", "em;\n            transition-duration:.45s;\n            display:inline-block;\n            transition-duration:1.4s;\n            transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);\n            font-size: ", "px;\n            background:  ", ";\n            opacity: ", ";\n            animation: ", " 1s infinite;\n        "]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n        height: ", "em;\n        transition-duration:.45s;\n        display:inline-block;\n        transition-duration:1.4s;\n        transition-timing-function: cubic-bezier(.43,-0.28,.25,1.37);\n        font-size: ", "px;\n        background:  ", ";\n        opacity: ", ";\n        animation: ", " 1s infinite;\n    "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -740,7 +869,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n            left: ", "px;\n            top: ", "px;"]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n        left: ", "px;\n        top: ", "px;"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -750,7 +879,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n        color: ", ";\n        background-color: ", ";\n        box-shadow: 0 0.5em ", ", 0 -0.5em ", ", 0.5em 0 ", ", -0.5em 0 ", ";"]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    color: ", ";\n    background-color: ", ";\n    box-shadow: 0 0.5em ", ", 0 -0.5em ", ", 0.5em 0 ", ", -0.5em 0 ", ";"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -762,66 +891,90 @@ function _templateObject() {
 /** @jsx jsx */
 
 
+
+
 var colors = ['#e76e55', '#FF00CC', '#EE34D2', '#FF6EFF', '#50BFE6', '#AAF0D1', '#66FF66', '#CCFF00', '#FFFF66', '#FFFF66', '#FFCC33', '#FF9933', '#FF9966', '#FF6037', '#FD5B78', '#FF355E'];
 var animation = ['shine2', 'shine1', 'shine3'];
+
+var createBall = function createBall(windowValues) {
+  var w = Object(_utils__WEBPACK_IMPORTED_MODULE_3__["rnd"])(0.5, 1);
+  var h = Object(_utils__WEBPACK_IMPORTED_MODULE_3__["rnd"])(0.5, 1);
+  var color = colors[Math.floor(Math.random() * colors.length)];
+  var spanCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject(), color, color, color, color, color, color);
+  var containerCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject2(), Math.random() * (window.innerWidth - 2), Math.random() * (window.innerHeight - 2));
+  var ballCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject3(), h, Object(_utils__WEBPACK_IMPORTED_MODULE_3__["rnd"])(6, 10), color, Math.random(), animation[Object(_utils__WEBPACK_IMPORTED_MODULE_3__["rnd"])(0, 2)]);
+  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
+    key: Math.random(),
+    className: "absolute",
+    css: containerCss,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 13
+    }
+  }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
+    css: ballCss,
+    className: "ball",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 78
+    }
+  }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("span", {
+    css: spanCss,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 114
+    }
+  }, "1")));
+};
+
 function PartyBackground() {
-  var _this = this;
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(function () {
+    return true ? {
+      w: window.innerWidth,
+      h: window.innerHeight
+    } : undefined;
+  }),
+      windowSize = _useState[0],
+      setWindowSize = _useState[1];
 
-  var _useUtils = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_3__["default"])(),
-      windowWidth = _useUtils.windowWidth,
-      windowHeight = _useUtils.windowHeight,
-      rnd = _useUtils.rnd;
-
-  var createBall = function createBall() {
-    var w = rnd(0.5, 1);
-    var h = rnd(0.5, 1);
-    var color = colors[Math.floor(Math.random() * colors.length)];
-    var spanCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject(), color, color, color, color, color, color);
-    var containerCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject2(), Math.random() * (windowWidth - 2), Math.random() * (windowHeight - 2));
-    var ballCss = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["css"])(_templateObject3(), h, rnd(6, 10), color, Math.random(), animation[rnd(0, 2)]);
-    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
-      key: Math.random(),
-      className: "absolute",
-      css: containerCss,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 17
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
-      css: ballCss,
-      className: "ball",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 82
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("span", {
-      css: spanCss,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 118
-      }
-    }, "1")));
-  };
-
+  var balls = Object(react__WEBPACK_IMPORTED_MODULE_1__["useMemo"])(function () {
+    if (true) {
+      return Array.from({
+        length: 400
+      }, function (item) {
+        return createBall(windowSize);
+      });
+    } else {}
+  }, [windowSize]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (false) {}
+    var handleResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default()(function () {
+      if (window.innerHeight > windowSize.h || window.innerWidth > windowSize.w) setWindowSize({
+        w: window.innerWidth,
+        h: window.innerHeight
+      });
+    }, 100);
+    window.addEventListener('resize', handleResize);
+    return function () {
+      handleResize.cancel();
+      window.removeEventListener('resize', handleResize);
+    };
+  });
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
     className: "fixed top-0 left-0 z-1-",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 77,
       columnNumber: 9
     }
-  }, Array.from({
-    length: 400
-  }, function (item) {
-    return createBall();
-  }));
+  }, balls);
 }
 
 /***/ }),
@@ -839,7 +992,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/GameContext */ "./context/GameContext.tsx");
-/* harmony import */ var _hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useUtils */ "./hooks/useUtils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./utils/index.ts");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./components/Button.tsx");
 var _jsxFileName = "/Users/slnsrn/Documents/Projects/MyGames/GuessNumber/guess-my-number/components/SettingsTool.tsx";
 
@@ -861,15 +1014,12 @@ function SettingsTool() {
       setRounds = _useContext.setRounds,
       gameStarted = _useContext.gameStarted;
 
-  var _useUtils = Object(_hooks_useUtils__WEBPACK_IMPORTED_MODULE_2__["default"])(),
-      scrollTop = _useUtils.scrollTop;
-
   var digitChoices = __jsx("div", {
     className: "my-4 w-full sm:w-1/2 md:w-full flex flex-col md:flex-row",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 16,
       columnNumber: 27
     }
   }, __jsx("span", {
@@ -877,7 +1027,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 17,
       columnNumber: 9
     }
   }, "Digits:"), availableDigits.map(function (digit) {
@@ -887,7 +1037,7 @@ function SettingsTool() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
+        lineNumber: 18,
         columnNumber: 39
       }
     }, __jsx("input", {
@@ -901,14 +1051,14 @@ function SettingsTool() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
+        lineNumber: 18,
         columnNumber: 78
       }
     }), __jsx("span", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
+        lineNumber: 18,
         columnNumber: 288
       }
     }, "".concat(digit, " digits")));
@@ -919,7 +1069,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 21,
       columnNumber: 27
     }
   }, __jsx("span", {
@@ -927,7 +1077,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, "Rounds:"), availableRounds.map(function (round) {
@@ -937,7 +1087,7 @@ function SettingsTool() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 23,
         columnNumber: 39
       }
     }, __jsx("input", {
@@ -951,21 +1101,21 @@ function SettingsTool() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 23,
         columnNumber: 79
       }
     }), __jsx("span", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 23,
         columnNumber: 288
       }
     }, round === 0 ? 'unlimited' : "".concat(round, " rounds")));
   }));
 
   var handleClick = function handleClick() {
-    scrollTop();
+    Object(_utils__WEBPACK_IMPORTED_MODULE_2__["scrollTop"])();
     startGame();
   };
 
@@ -974,7 +1124,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 32,
       columnNumber: 12
     }
   }, !gameStarted && __jsx("div", {
@@ -982,7 +1132,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 34,
       columnNumber: 16
     }
   }, digitChoices, roundChoices), !gameStarted && __jsx(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -991,7 +1141,7 @@ function SettingsTool() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 38,
       columnNumber: 30
     }
   }));
@@ -1178,56 +1328,6 @@ GameContext.displayName = 'GameContext';
     }
   }, children);
 });
-
-/***/ }),
-
-/***/ "./hooks/useUtils.ts":
-/*!***************************!*\
-  !*** ./hooks/useUtils.ts ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useUtils; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function useUtils() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      windowWidth = _useState[0],
-      setWindowWidth = _useState[1];
-
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      windowHeight = _useState2[0],
-      setWindowHeight = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (window) {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    }
-  }, []);
-
-  var scrollTop = function scrollTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  var rnd = function rnd(m, n) {
-    return Math.floor(Math.random() * (n - m + 1)) + m;
-  };
-
-  return {
-    windowWidth: windowWidth,
-    windowHeight: windowHeight,
-    scrollTop: scrollTop,
-    rnd: rnd
-  };
-}
 
 /***/ }),
 
@@ -3587,6 +3687,623 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_Symbol.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/_Symbol.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+
+/** Built-in value references. */
+var Symbol = root.Symbol;
+
+module.exports = Symbol;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseGetTag.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseGetTag.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
+    getRawTag = __webpack_require__(/*! ./_getRawTag */ "./node_modules/lodash/_getRawTag.js"),
+    objectToString = __webpack_require__(/*! ./_objectToString */ "./node_modules/lodash/_objectToString.js");
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_freeGlobal.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_freeGlobal.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+module.exports = freeGlobal;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_getRawTag.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_getRawTag.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js");
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_objectToString.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_objectToString.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_root.js":
+/*!**************************************!*\
+  !*** ./node_modules/lodash/_root.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/debounce.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/debounce.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    now = __webpack_require__(/*! ./now */ "./node_modules/lodash/now.js"),
+    toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js");
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing
+      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+      : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+module.exports = debounce;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isObject.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isObject.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isObjectLike.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/isObjectLike.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isSymbol.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isSymbol.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
+    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && baseGetTag(value) == symbolTag);
+}
+
+module.exports = isSymbol;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/now.js":
+/*!************************************!*\
+  !*** ./node_modules/lodash/now.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+module.exports = now;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/toNumber.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/toNumber.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    isSymbol = __webpack_require__(/*! ./isSymbol */ "./node_modules/lodash/isSymbol.js");
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
+
+
+/***/ }),
+
 /***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fslnsrn%2FDocuments%2FProjects%2FMyGames%2FGuessNumber%2Fguess-my-number%2Fpages%2Findex.js&hotRouterUpdates=true!./":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fslnsrn%2FDocuments%2FProjects%2FMyGames%2FGuessNumber%2Fguess-my-number%2Fpages%2Findex.js&hotRouterUpdates=true ***!
@@ -4276,6 +4993,37 @@ module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7
 
 /***/ }),
 
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -4350,12 +5098,22 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 12,
       columnNumber: 9
     }
+  }), __jsx("link", {
+    rel: "icon",
+    type: "image/png",
+    href: "press.png",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 9
+    }
   })), __jsx("div", {
     className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 5
     }
   }, __jsx("h1", {
@@ -4363,18 +5121,41 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 7
     }
   }, "Guess my number"), __jsx(_components_GameBoard__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 7
     }
   })));
 });
+
+/***/ }),
+
+/***/ "./utils/index.ts":
+/*!************************!*\
+  !*** ./utils/index.ts ***!
+  \************************/
+/*! exports provided: scrollTop, rnd */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollTop", function() { return scrollTop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rnd", function() { return rnd; });
+var scrollTop = function scrollTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+var rnd = function rnd(m, n) {
+  return Math.floor(Math.random() * (n - m + 1)) + m;
+};
 
 /***/ }),
 
