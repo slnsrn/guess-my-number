@@ -95,7 +95,7 @@ export default function GameBoard (){
     const returnInstructions = ()=>{
         if(!gameStarted || !!gameResult) return
 
-        return (<div className='text-xs lg:text-sm'>
+        return (<div className='text-xs lg:text-sm mt-4'>
         <span className='self-center'>When you have </span>
         <div className='flex flex-col lg:flex-row pl-2 lg:pl-12'>
             <span className='self-center lg:mr-4'>a match: </span>
