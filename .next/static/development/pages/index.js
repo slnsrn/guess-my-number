@@ -5108,12 +5108,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 13,
       columnNumber: 9
     }
+  }), __jsx("link", {
+    href: "https://unpkg.com/nes.css@latest/css/nes.min.css",
+    rel: "stylesheet",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 9
+    }
   })), __jsx("div", {
     className: "w-full px-4 py-8 md:p-12 xl:px-40 lg:py-12",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 5
     }
   }, __jsx("h1", {
@@ -5121,14 +5130,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 7
     }
   }, "Guess my number"), __jsx(_components_GameBoard__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 7
     }
   })));

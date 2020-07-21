@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var scrollTop = function scrollTop() {\n  window.scrollTo({\n    top: 0,\n    behavior: 'smooth'\n  });\n};\nexport var rnd = function rnd(m, n) {\n  return Math.floor(Math.random() * (n - m + 1)) + m;\n};","map":null,"metadata":{},"sourceType":"module"}
